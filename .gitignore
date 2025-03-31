@@ -1,0 +1,39 @@
+# Node modules (dependencies)
+node_modules/
+/*/node_modules/
+
+# Build output
+build/
+**/build/
+
+# Dependencies lockfiles
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Environment variables
+.env
+**/.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Logs and debugging files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+turbo-debug.log*
+
+# Editor and OS files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# TypeScript (if used)
+*.tsbuildinfo
