@@ -1,0 +1,8 @@
+{
+  "name": "ultimate-react-course-main",
+  "packageManager": "yarn@4.4.1",
+  "private": true,
+  "workspaces": [
+    "apps/*"
+  ]
+}
