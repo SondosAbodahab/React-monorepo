@@ -1,8 +1,12 @@
 {
-  "name": "ultimate-react-course-main",
-  "packageManager": "yarn@4.4.1",
+  "name": "react-monorepo",
+  "version": "1.0.0",
   "private": true,
   "workspaces": [
     "apps/*"
-  ]
+  ],
+  "dependencies": {
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  }
 }
