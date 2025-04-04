@@ -80,17 +80,22 @@ function Form({ onAddItems }) {
 function PackingList({ items, onDeleteItem, onToggleItems }) {
   const [sortBy, setSortBy] = useState("input");
   let sortedItems;
-  // slice used to not mutate the original items array
-  if (sortBy === "input") sortedItems = items;
-  if (sortBy === "description")
-    sortedItems = items
-      .slice()
-      .sort((a, b) => a.description.localeCompare(b.description));
 
-  if (sortBy === "packed")
-    sortedItems = items
-      .slice()
-      .sort((a, b) => Number(a.packed) - Number(b.packed));
+  switch (sortBy) {
+    case "description":
+      sortedItems = items
+        .slice()
+        .sort((a, b) => a.description.localeCompare(b.description));
+      break;
+    case "packed":
+      sortedItems = items
+        .slice()
+        .sort((a, b) => Number(a.packed) - Number(b.packed));
+      break;
+    default:
+      sortedItems = items;
+      break;
+  }
 
   return (
     <div className="list">
