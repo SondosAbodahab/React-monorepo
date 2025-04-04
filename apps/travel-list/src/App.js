@@ -19,7 +19,7 @@ export default function App() {
   function handleToggleItem(id) {
     setItems((items) =>
       items.map((item) =>
-        item.id === id ? {...item, packed:!item.packed} : item
+        item.id === id ? { ...item, packed: !item.packed } : item
       )
     );
   }
@@ -27,8 +27,12 @@ export default function App() {
     <div className="app">
       <Logo />
       <Form onAddItems={handleAddItems} />
-      <PackingList items={items} onDeleteItem={handleDeleteItem} onToggleItems={handleToggleItem} />
-      <Stats />
+      <PackingList
+        items={items}
+        onDeleteItem={handleDeleteItem}
+        onToggleItems={handleToggleItem}
+      />
+      <Stats items={items} />
     </div>
   );
 }
@@ -73,22 +77,33 @@ function Form({ onAddItems }) {
   );
 }
 
-function PackingList({ items, onDeleteItem , onToggleItems }) {
+function PackingList({ items, onDeleteItem, onToggleItems }) {
   return (
     <div className="list">
       <ul>
         {items.map((item) => (
-          <Item item={item} key={item.id} onDeleteItem={onDeleteItem} onToggleItems={onToggleItems} />
+          <Item
+            item={item}
+            key={item.id}
+            onDeleteItem={onDeleteItem}
+            onToggleItems={onToggleItems}
+          />
         ))}
       </ul>
     </div>
   );
 }
 
-function Item({ item, onDeleteItem , onToggleItems }) {
+function Item({ item, onDeleteItem, onToggleItems }) {
   return (
     <li key={item.id}>
-      <input type="checkbox" value={item.packed} onChange={() => {onToggleItems(item.id)}} />
+      <input
+        type="checkbox"
+        value={item.packed}
+        onChange={() => {
+          onToggleItems(item.id);
+        }}
+      />
       <span style={item.packed ? { textDecoration: "line-through" } : {}}>
         {item.quantity} {item.description}
       </span>
@@ -97,10 +112,17 @@ function Item({ item, onDeleteItem , onToggleItems }) {
   );
 }
 
-function Stats() {
+function Stats({ items }) {
+  const numItems = items.length;
+  const numPacked = items.filter((item) => item.packed).length;
+  const percentage = (numPacked / numItems) * 100;
   return (
     <footer className="stats">
-      <em>🧳 You have X items on your list. and you already packed X (X%)</em>
+      {numItems ?
+        <em>
+       {percentage === 100 ?  `You have got everything ✈️`: `🧳 You have ${numItems} items on your list. and you already packed
+        ${numPacked} (${percentage}%)`}
+      </em> : <em>Start adding some items 🚀</em>}
     </footer>
   );
 }
