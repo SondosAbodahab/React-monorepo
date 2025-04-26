@@ -1,5 +1,5 @@
 function Progress({ points, index, numQuestions, maxPossiblePoints }) {
-  return (
+    return (
     <header className="progress">
       <p>
         Question <strong>{index + 1}</strong>/{numQuestions}
