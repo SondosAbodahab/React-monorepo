@@ -10476,8 +10476,10 @@ workbox-window@6.6.0:
   resolved "file:apps/worldwise"
   dependencies:
     eslint-config-react-app "^7.0.1"
+    json-server "^1.0.0-beta.3"
     react "^18.2.0"
     react-dom "^18.2.0"
+    react-router-dom "^6.30.0"
     vite-plugin-eslint "^1.8.1"
 
 "wrap-ansi-cjs@npm:wrap-ansi@^7.0.0":
